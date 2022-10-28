@@ -1,4 +1,4 @@
-package Controller;
+package com.mysite.sbb.Controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ public class HelloController {
     @RequestMapping("/hello")
     @ResponseBody
     public String hello() {
-        log.info("hello, world");
+        log.info("hello, world,+0");
         return "Hello";
     }
 }

@@ -4,9 +4,7 @@
 <div class="container" layout:fragment="content">
     <h5 class="my-3 border-bottom pb-2">질문등록</h5>
     <form method="post" th:action="@{/question/create}" th:object="${questionForm}">
-        <div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
-            <div th:each="err : ${#fields.allErrors()}" th:text="${err}"></div>
-        </div>
+        <div th:replace="form_errors::formErrorsFragment"></div>
         <div class="mb-3">
             <label class="form-label" for="subject">제목</label>
             <input class="form-control" id="subject" th:field="*{subject}" type="text">

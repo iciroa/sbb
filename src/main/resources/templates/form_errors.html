@@ -1,0 +1,9 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="ko" layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<div class="alert alert-danger" role="alert" th:fragment="formErrorsFragment" th:if="${#fields.hasAnyErrors()}">
+    <div th:each="err : ${#fields.allErrors()}" th:text="${err}"></div>
+</div>
+
+</html>

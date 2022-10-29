@@ -32,8 +32,11 @@
     </div>
 
     <!-- 답변 작성 -->
-    <form class="my-3" method="post" th:action="@{|/answer/create/${question.id}|}">
-        <textarea class="form-control" id="content" name="content" rows="15"></textarea>
+    <form class="my-3" method="post" th:action="@{|/answer/create/${question.id}|}" th:object="${answerForm}">
+        <div class="alert alert-danger" role="alert" th:if="${#fields.hasAnyErrors()}">
+            <div th:each="err : ${#fields.allErrors()}" th:text="${err}"></div>
+        </div>
+        <textarea class="form-control" id="content" rows="15" th:field="*{content}"></textarea>
         <input class="btn btn-primary my-2" type="submit" value="답변등록">
     </form>
 </div>

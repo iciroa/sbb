@@ -1,6 +1,7 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html lang="ko" layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 <div class="container my-3" layout:fragment="content">
     <!-- 질문 -->
@@ -34,7 +35,10 @@
     <!-- 답변 작성 -->
     <form class="my-3" method="post" th:action="@{|/answer/create/${question.id}|}" th:object="${answerForm}">
         <div th:replace="form_errors::formErrorsFragment"></div>
-        <textarea class="form-control" id="content" rows="15" th:field="*{content}"></textarea>
+        <textarea class="form-control" disabled id="content" rows="15"
+                  sec:authorize="isAnonymous()" th:field="*{content}">먼저 로그인하세요</textarea>
+        <textarea class="form-control" id="content" rows="15" sec:authorize="isAuthenticated()"
+                  th:field="*{content}"></textarea>
         <input class="btn btn-primary my-2" type="submit" value="답변등록">
     </form>
 </div>

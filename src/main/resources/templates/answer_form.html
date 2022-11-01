@@ -1,0 +1,16 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html lang="ko" layout:decorate="~{layout}" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<div class="container my-3" layout:fragment="content">
+    <h5 class="my-3 border-bottom pb-2">답변수정</h5>
+    <form method="post" th:object="${answerForm}">
+        <input th:name="${_csrf.parameterName}" th:value="${_csrf.token}" type="hidden">
+        <div th:replace="form_errors::formErrorsFragment"></div>
+        <div class="mb-3">
+            <label class="form-label" for="content">내용</label>
+            <textarea class="form-control" rows="10" th:field="*{content}"></textarea>
+        </div>
+        <input class="btn btn-primary my-2" type="submit" value="저장하기">
+    </form>
+</div>
+</html>
